@@ -1,0 +1,40 @@
+ using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class PauseManager : MonoBehaviour
+{
+    public GameObject pauseMenuUI;  // اسحب الـ Panel بتاع القائمة هنا
+    private bool isPaused = false;
+
+    void Update()
+    {
+        // لما تضغط على حرف E
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (isPaused)
+                Resume();
+            else
+                Pause();
+        }
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;  // الوقت يرجع يعمل تاني
+        isPaused = false;
+    }
+
+    void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;  // الوقت يقف
+        isPaused = true;
+    }
+
+    public void LoadMainMenu()
+    {
+        Time.timeScale = 1f;  // مهم جداً قبل ما تروح للمينيو
+        SceneManager.LoadScene("main menu");  // اسم مشهد المينيو عندك
+    }
+}
