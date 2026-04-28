@@ -2728,7 +2728,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4a0153dd1a0b1214ea36e3d02728fb65, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.6
+      value: 10.58
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a0153dd1a0b1214ea36e3d02728fb65, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7008,6 +7008,43 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c98458455be827c41a2536fc1affd2e8, type: 3}
+--- !u!1 &1242470221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5623136205643461966, guid: 201174174b32d3b48ac8f12b39bd2d06, type: 3}
+  m_PrefabInstance: {fileID: 1471106732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1242470223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242470221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c2c3ed5b4d0db49867e6d5b1b97df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractionSystem
+  interactRange: 2.5
+  interactText: {fileID: 369078330}
+--- !u!114 &1242470224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242470221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae3a5978ba852f542a09a1a7b3fe20eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleInteractable
+  puzzleTitle: Puzzle
+  question: 12 + 13 = ?
+  correctAnswer: 25
+  puzzleIndex: 0
+  uiController: {fileID: 1434555540}
+  puzzleManager: {fileID: 2114604973}
 --- !u!1001 &1250853018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8377,7 +8414,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5623136205643461966, guid: 201174174b32d3b48ac8f12b39bd2d06, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1242470224}
+    - targetCorrespondingSourceObject: {fileID: 5623136205643461966, guid: 201174174b32d3b48ac8f12b39bd2d06, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1242470223}
   m_SourcePrefab: {fileID: 100100000, guid: 201174174b32d3b48ac8f12b39bd2d06, type: 3}
 --- !u!1001 &1474573015
 PrefabInstance:
