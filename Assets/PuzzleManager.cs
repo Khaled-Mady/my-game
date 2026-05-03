@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -14,6 +16,9 @@ public class PuzzleManager : MonoBehaviour
     [Header("Door")]
     public DoorController exitDoor;
 
+    [Header("Loading Screen")]
+    public GameObject loadingCanvas;
+
     private bool[] solved;
     private int solvedCount = 0;
 
@@ -25,6 +30,9 @@ public class PuzzleManager : MonoBehaviour
 
         if (congratuationsPanel != null)
             congratuationsPanel.SetActive(false);
+
+        if (loadingCanvas != null)
+            loadingCanvas.SetActive(false);
     }
 
     public void SolvePuzzle(int index)
@@ -39,14 +47,20 @@ public class PuzzleManager : MonoBehaviour
         if (solvedCount >= totalPuzzles)
         {
             ShowCongratulations();
-            if (exitDoor != null)
-                exitDoor.OpenDoor();
-
-            // 🔥🔥🔥 أضف السطر ده هنا 🔥🔥🔥
-            LevelManager levelManager = FindObjectOfType<LevelManager>();
-            if (levelManager != null)
-                levelManager.CompleteLevel();
+            StartCoroutine(LoadLevel2WithDelay());
         }
+    }
+
+    IEnumerator LoadLevel2WithDelay()
+    {
+        if (loadingCanvas != null)
+            loadingCanvas.SetActive(true);
+
+        Debug.Log("⏳ شاشة التحميل ظهرت... انتظار 7 ثواني");
+        yield return new WaitForSeconds(7f);
+
+        Debug.Log("🚀 جاري الانتقال إلى Level 2");
+        SceneManager.LoadScene("Level2");
     }
 
     void ShowCongratulations()
@@ -94,8 +108,8 @@ public class PuzzleManager : MonoBehaviour
             progressText.text = "Solved: " + solvedCount + "/" + totalPuzzles +
                                 " | Remaining: " + (totalPuzzles - solvedCount);
         }
-
     }
+
     public bool IsAllPuzzlesSolved()
     {
         return solvedCount >= totalPuzzles;

@@ -66,15 +66,24 @@ public class PuzzleUIController : MonoBehaviour
         currentPuzzle = null;
     }
 
-    public void Submit()
+    // ✅ الدالة اللي هتربطها بالزر ✅
+    public void SubmitAnswer()
     {
-        if (currentPuzzle == null) return;
+        Debug.Log("✅ SubmitAnswer اشتغلت!");
+
+        if (currentPuzzle == null)
+        {
+            Debug.LogWarning("currentPuzzle == null");
+            return;
+        }
 
         string userAnswer = answerInput != null ? answerInput.text.Trim() : "";
         bool isCorrect = currentPuzzle.CheckAnswer(userAnswer);
 
         if (isCorrect)
         {
+            Debug.Log("✅ إجابة صحيحة!");
+
             if (feedbackText != null)
                 feedbackText.text = "Correct!";
             else if (questionText != null)
@@ -84,6 +93,8 @@ public class PuzzleUIController : MonoBehaviour
         }
         else
         {
+            Debug.Log("❌ إجابة خاطئة!");
+
             if (feedbackText != null)
                 feedbackText.text = "Wrong answer, try again!";
             else if (questionText != null)
